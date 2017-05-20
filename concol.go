@@ -14,7 +14,7 @@ func main() {
 	w := ansicolor.NewAnsiColorWriter(os.Stdout)
 
 	fmt.Println()
-	fmt.Fprintf(w, "                 ")
+	fmt.Fprint(w, "                 ")
 	for bg := 40; bg <= 47; bg++ {
 		fmt.Fprintf(w, "  %dm     ", bg)
 	}
@@ -50,7 +50,7 @@ func printLine(w io.Writer, fg int, control string, bold bool) {
 		}
 
 		fmt.Fprintf(w, cmd)
-		fmt.Fprintf(w, "\x1b[0m ")
+		fmt.Fprint(w, "\x1b[0m ")
 	}
 	fmt.Fprintln(w)
 }
