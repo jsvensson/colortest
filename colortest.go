@@ -41,7 +41,7 @@ func printLine(w io.Writer, fg int, control string, bold bool) {
 		cmd = fmt.Sprintf("\x1b[1;%dm %v ", fg, rune)
 	}
 
-	fmt.Fprintf(w, cmd)
+	fmt.Fprint(w, cmd)
 
 	for bg := 40; bg <= 47; bg++ {
 		cmd := fmt.Sprintf("\x1b[%d;%dm %v ", fg, bg, rune)
@@ -49,7 +49,7 @@ func printLine(w io.Writer, fg int, control string, bold bool) {
 			cmd = fmt.Sprintf("\x1b[1;%d;%dm %v ", fg, bg, rune)
 		}
 
-		fmt.Fprintf(w, cmd)
+		fmt.Fprint(w, cmd)
 		fmt.Fprint(w, "\x1b[0m ")
 	}
 	fmt.Fprintln(w)
